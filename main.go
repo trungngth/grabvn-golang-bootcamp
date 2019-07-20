@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -15,8 +16,7 @@ func main() {
 		input := scanner.Text()
 		element := strings.Split(input, " ")
 		if len(element) != 3 {
-			fmt.Printf("Missing arguments or way too many arguments! %s\n", element)
-			os.Exit(1)
+			log.Fatal("Missing arguments or way too many arguments!", element)
 		}
 		execute(element[0], element[1], element[2])
 		fmt.Printf("\n> ")
@@ -28,14 +28,12 @@ func execute(first, operand, second string) {
 
 	firstNumber, err := strconv.Atoi(first)
 	if err != nil {
-		fmt.Println("First input must be an integer!")
-		os.Exit(1)
+		log.Fatal("First input must be an integer!")
 	}
 
 	secondNumber, err := strconv.Atoi(second)
 	if err != nil {
-		fmt.Println("Second input must be an integer!")
-		os.Exit(1)
+		log.Fatal("Second input must be an integer!")
 	}
 
 	switch operand {
@@ -48,8 +46,7 @@ func execute(first, operand, second string) {
 	case "/":
 		result = float64(firstNumber) / float64(secondNumber)
 	default:
-		fmt.Println("Invalid operand!")
-		os.Exit(1)
+		log.Fatal("Invalid operand!")
 	}
 	printResult(first, operand, second, result)
 }
