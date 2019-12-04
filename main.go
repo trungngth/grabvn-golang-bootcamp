@@ -54,3 +54,7 @@ func execute(first, operand, second string) {
 func printResult(first, operand, second string, result float64) {
 	fmt.Printf("%v %v %v = %v", first, operand, second, result)
 }
+
+func test() {
+	fmt.Println("Test")
+}
